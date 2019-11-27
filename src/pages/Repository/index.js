@@ -45,7 +45,7 @@ export default class Repository extends Component {
     this.setState({
       repository: repository.data,
       issues: issues.data,
-      loading: true, // false
+      loading: false, // false
     });
   }
 
