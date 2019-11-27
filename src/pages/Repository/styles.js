@@ -2,12 +2,25 @@ import styled from 'styled-components';
 
 export const Loading = styled.div`
   color: #fff;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+
+    div {
+      margin-left: 1px;
+      padding-top: 7px;
+    }
+  }
 `;
 
 export const Owner = styled.header`

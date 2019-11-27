@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FaGithub, FaPlus, FaSpinner, FaStopCircle } from 'react-icons/fa';
+import { FaGithub, FaPlus, FaSpinner } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
@@ -72,7 +72,7 @@ export default class Main extends Component {
     return (
       <Container>
         <h1>
-          <FaGithub />
+          <FaGithub size={75} />
           Repositórios
         </h1>
 
@@ -86,8 +86,6 @@ export default class Main extends Component {
           <SubmitButton loading={Number(loading)}>
             {loading ? (
               <FaSpinner color="#FFF" size={14} />
-            ) : error ? (
-              <FaStopCircle color="#ff6b6b" size={14} />
             ) : (
               <FaPlus color="#FFF" size={14} />
             )}

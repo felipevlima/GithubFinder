@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Lottie from 'react-lottie';
+import animationData from '../../animations/loading2.json';
+import animationDataDots from '../../animations/loadingdots.json';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
@@ -19,6 +22,8 @@ export default class Repository extends Component {
     repository: {},
     issues: [],
     loading: true,
+    isStopped: false,
+    isPaused: false,
   };
 
   async componentDidMount() {
@@ -39,15 +44,55 @@ export default class Repository extends Component {
     this.setState({
       repository: repository.data,
       issues: issues.data,
-      loading: false,
+      loading: false, // false
     });
   }
 
   render() {
     const { repository, issues, loading } = this.state;
 
+    const defaultOptions = {
+      loop: true,
+      autoplay: true,
+      animationData,
+      rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice',
+      },
+    };
+
+    const defaultOptionsDots = {
+      loop: true,
+      autoplay: true,
+      animationData: animationDataDots,
+      rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice',
+      },
+    };
+
     if (loading) {
-      return <Loading>Carregando</Loading>;
+      return (
+        <Loading>
+          <Lottie
+            options={defaultOptions}
+            height={50}
+            width={50}
+            isStopped={this.state.isStopped}
+            isPaused={this.state.isPaused}
+          />
+          <div>
+            Carregando
+            <div>
+              <Lottie
+                options={defaultOptionsDots}
+                height={25}
+                width={25}
+                isStopped={this.state.isStopped}
+                isPaused={this.state.isPaused}
+              />
+            </div>
+          </div>
+        </Loading>
+      );
     }
 
     return (

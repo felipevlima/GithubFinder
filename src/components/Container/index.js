@@ -11,11 +11,12 @@ const Container = styled.div`
   h1 {
     font-size: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 
     svg {
-      margin-right: 10px;
+      margin-bottom: 10px;
     }
   }
 `;
