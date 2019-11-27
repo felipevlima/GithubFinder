@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Lottie from 'react-lottie';
+// import animationData from '../../animations/rocket.json';
 import animationData from '../../animations/loading2.json';
 import animationDataDots from '../../animations/loadingdots.json';
 import api from '../../services/api';
@@ -44,12 +45,12 @@ export default class Repository extends Component {
     this.setState({
       repository: repository.data,
       issues: issues.data,
-      loading: false, // false
+      loading: true, // false
     });
   }
 
   render() {
-    const { repository, issues, loading } = this.state;
+    const { repository, issues, loading, isStopped, isPaused } = this.state;
 
     const defaultOptions = {
       loop: true,
@@ -74,10 +75,10 @@ export default class Repository extends Component {
         <Loading>
           <Lottie
             options={defaultOptions}
-            height={50}
-            width={50}
-            isStopped={this.state.isStopped}
-            isPaused={this.state.isPaused}
+            height={75}
+            width={75}
+            isStopped={isStopped}
+            isPaused={isPaused}
           />
           <div>
             Carregando
@@ -86,8 +87,8 @@ export default class Repository extends Component {
                 options={defaultOptionsDots}
                 height={25}
                 width={25}
-                isStopped={this.state.isStopped}
-                isPaused={this.state.isPaused}
+                isStopped={isStopped}
+                isPaused={isPaused}
               />
             </div>
           </div>

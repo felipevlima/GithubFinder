@@ -43,10 +43,12 @@ export default class Main extends Component {
     try {
       const { newRepo, repositories } = this.state;
 
+      // eslint-disable-next-line no-throw-literal
       if (newRepo === '') throw 'Você precisa indicar um repositório';
 
       const hasRepo = repositories.find(r => r.name === newRepo);
 
+      // eslint-disable-next-line no-throw-literal
       if (hasRepo) throw 'Repositorio duplicado';
 
       const response = await api.get(`/repos/${newRepo}`);
